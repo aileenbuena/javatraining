@@ -7,7 +7,7 @@ import org.springframework.context.annotation.PropertySource;
 
 @SpringBootApplication
 @ConfigurationPropertiesScan("com.bootcamp.springboot")
-@PropertySource(value = {"file:C:/TodoApp/application.properties"}, ignoreResourceNotFound = true)
+//@PropertySource(value = {"file:C:/TodoApp/application.properties"}, ignoreResourceNotFound = true)
 public class Application {
 
 	public static void main(String[] args) {

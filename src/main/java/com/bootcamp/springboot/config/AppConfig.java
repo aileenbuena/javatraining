@@ -12,8 +12,8 @@ import org.springframework.context.annotation.PropertySource;
 import java.sql.Connection;
 import java.sql.DriverManager;
 
-@Configuration
-@ConfigurationProperties(prefix="db")
+//@Configuration
+//@ConfigurationProperties(prefix="db")
 public class AppConfig {
 
     private String serverurl;

@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
-    <title>Exercise 2</title>
+    <title>ToDo App</title>
 
 
     <link th:rel="stylesheet" th:href="@{assets/datatable/datatables.css}"/>
@@ -13,15 +13,15 @@
 <body>
 
 <div class="container">
-    <h5 class="application-margin-top">Task List</h5>
-    <button class="btn-danger" style="width: 120px;margin-top: 90px;" id="btnAddTask">Add Task</button>
+    <h5 class="application-margin-top">ToDo List</h5>
+    <button class="btn-danger" style="width: 120px;margin-top: 50px;" id="btnAdd">Add ToDo</button>
     <div class="row application-margin-top">
         <div class="col">
             <div class="">
-                <table id="tblTask" class="table table-bordered" style="width: 100%">
+                <table id="tblList" class="table table-bordered" style="width: 100%">
                     <thead style="background-color: darkred !important;color: white;">
                     <tr>
-                        <th>Task ID</th>
+                        <th>ID</th>
                         <th>Task Name</th>
                         <th>End Date</th>
                         <th>Status</th>
@@ -34,32 +34,44 @@
     </div>
 </div>
 
+<div class="modal fade modal-lg" id="divCreateUpdate" tabindex="-1" role="dialog" aria-labelledby="divCreateUpdate" aria-hidden="true" data-keyboard="false">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title"><strong>Create Todo</strong></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="margin-top: -20px;">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="panel-primary">
+                        <label>Name:</label>
+                        <input type="text" class="form-control input-sm" id="txtName">
+                        <br />
+                        <label>End Date:</label>
+                        <input type="date" class="form-control input-sm" id="txtEndDate">
+                        <br>
+                        <label>Status:</label>
+                        <select class="form-control" id="ddlStatus">
+                            <option>On Queue</option>
+                            <option>In Progress</option>
+                            <option>Done</option>
+                        </select>
+                        <br /><br />
+                        <div class="modal-footer">
+                            <button class="btn btn-success" id="btnSave" >Save</button>
+                            <button class="btn btn-warning" data-dismiss="modal">Cancel</button>
+                        </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
 <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
 <script th:src="@{assets/datatable/datatables.js}"></script>
-
-<script>
-    $(document).ready(function(){
-        $('#tblTask').DataTable({
-            "processing": true,
-            "serverSide": true,
-            "ajax": {
-                "url": "/tasks",
-                "type": "GET",
-                "dataType": "json",
-                "contentType": "application/json",
-                "dataSrc": ""
-            },
-            "columns": [
-                {"data": "taskID", "width": "20%"},
-                {"data": "taskName","width": "20%"},
-                {"data": "endDate", "width": "20%"},
-                {"data": "status", "width": "20%"}
-            ]
-        });
-    });
-
-</script>
+<script th:src="@{assets/datatable/main.js}"></script>
 
 </body>
 </html>
